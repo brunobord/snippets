@@ -78,13 +78,13 @@ for content in listFile:
 				
 # Display the result
 # Affichage du résultat
-print 'Au départ dans',dlpath,':'
+print 'Au départ dans %s :' % dlpath
 if listFile.__len__() == 0:
 	print 'Aucun fichier "déplaçable"\n'
 else:
 	print listFile.__len__(),'fichier(s) "déplaçable(s)" dans le dossier\n'
 	
-print "A l'arrivée dans",tvpath,':'
+print "A l'arrivée dans %s :" % tvpath
 if listMove.__len__() == 0:
 	print "Aucun fichier n'a été déplacé"
 else:
