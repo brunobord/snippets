@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Name: MoveEpisodes
 # What: Move and sort your episodes from your download folder to the right folder (eg. "/<show name>/Season x")
