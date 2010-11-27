@@ -8,8 +8,8 @@
  *
  * NOTES :
  * ==============
- * "Robot" permettant la détection des nouveaux épisodes des séries suivies,
- *		et entre autres gère l'ajout en BDD de leurs noms et nicknames
+ * "Robot" permettant la détection (et le téléchargement) des nouveaux épisodes des séries suivies 
+ * depuis le site TVU.org.ru, et entre autres gère l'ajout en BDD de leurs noms et nicknames
  *
  * TODO : Gérer ezrss.it
  * 
