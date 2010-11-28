@@ -8,7 +8,7 @@
  *
  * NOTES :
  * ==============
- * Parser RSS permettant la détection (et le téléchargement) des nouveaux épisodes des séries suivies 
+ * "Robot" permettant la détection (et le téléchargement) des nouveaux épisodes des séries suivies 
  * depuis le site TVU.org.ru, et entre autres gère l'ajout en BDD de leurs noms et nicknames
  *
  * TODO : Gérer ezrss.it
@@ -68,7 +68,7 @@ while ($donneesSerie = mysqli_fetch_row($reqSerie))
 			$ar_tid[] = $tid;
 		}
 	}
-	elseif (stristr($rssURL, 'ezrss.it')) {
+	elseif (stristr($rssURL, 'ezrss.it')) { // ! TODO Récuprération des données pour ezrss.it
 	
 		foreach ($xml->channel->item as $v) { 
 		//<link>http://torrent.zoink.it/Dexter.S05E09.HDTV.XviD-FEVER.[eztv].torrent</link>
@@ -99,7 +99,7 @@ while ($donneesSerie = mysqli_fetch_row($reqSerie))
 		$tid = stristr($tid,'discuss/');
 		$tid = substr($tid, 8);
 		$tid = stristr($tid, '/</comments>', TRUE);
-		echo $tid .= '_eztv';?><br /><?php 		// On récupère l'identifiant "unique" de l'episode
+		e$tid .= '_eztv';		// On récupère l'identifiant "unique" de l'episode
 		$ar_tid[] = $tid;
 		}
 	}
