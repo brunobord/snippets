@@ -96,7 +96,7 @@ while ($donneesSerie = mysqli_fetch_row($reqSerie))
 		$ar_SaisonEpisode[] = $SaisonEpisode;
 		
 		$tid = $v->comments->asXML();
-		$tid = stristr($tid,'discuss/'); 
+		$tid = stristr($tid,'discuss/');
 		$tid = substr($tid, 8);
 		$tid = stristr($tid, '/</comments>', TRUE);
 		echo $tid .= '_eztv';?><br /><?php 		// On récupère l'identifiant "unique" de l'episode
