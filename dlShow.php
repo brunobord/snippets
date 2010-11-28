@@ -8,7 +8,7 @@
  *
  * NOTES :
  * ==============
- * "Robot" permettant la détection (et le téléchargement) des nouveaux épisodes des séries suivies 
+ * Parser RSS permettant la détection (et le téléchargement) des nouveaux épisodes des séries suivies 
  * depuis le site TVU.org.ru, et entre autres gère l'ajout en BDD de leurs noms et nicknames
  *
  * TODO : Gérer ezrss.it
@@ -68,10 +68,39 @@ while ($donneesSerie = mysqli_fetch_row($reqSerie))
 			$ar_tid[] = $tid;
 		}
 	}
-	elseif (stristr($rssURL, 'ezrss.it')) { // ! TODO Récuprération des données pour ezrss.it
+	elseif (stristr($rssURL, 'ezrss.it')) {
 	
 		foreach ($xml->channel->item as $v) { 
-	
+		//<link>http://torrent.zoink.it/Dexter.S05E09.HDTV.XviD-FEVER.[eztv].torrent</link>
+		//<category domain="http://eztv.it/shows/78/dexter/"><![CDATA[TV Show / Dexter]]></category>
+		//<description><![CDATA[Show Name: Dexter; Episode Title: N/A; Season: 5; Episode: 9]]></description>
+		
+		$link = $v->link->asXML();
+		$link = substr($link, 6, -7);
+		$ar_link[] = $link;
+		
+		$showName = $v->category->asXML();
+		$showName = mb_stristr($showName,'/ ');
+		$showName = substr($showName, 2,-14);
+		
+		$ligne = $v->description->asXML();
+		$nbSaison = stristr($ligne, 'Season: ');
+		$nbSaison = substr($nbSaison, 8);
+		$nbSaison = stristr($nbSaison, '; Ep', TRUE);	// On récupère le numéro de saison
+						
+		$nbEpisode = stristr($ligne,'Episode: ');
+		$nbEpisode = substr($nbEpisode, 9);
+		$nbEpisode = stristr($nbEpisode, ']]>', TRUE);	// On récupère le numéro de l'épisode
+		
+		$SaisonEpisode = $nbSaison.'x'.$nbEpisode;
+		$ar_SaisonEpisode[] = $SaisonEpisode;
+		
+		$tid = $v->comments->asXML();
+		$tid = stristr($tid,'discuss/'); 
+		$tid = substr($tid, 8);
+		$tid = stristr($tid, '/</comments>', TRUE);
+		echo $tid .= '_eztv';?><br /><?php 		// On récupère l'identifiant "unique" de l'episode
+		$ar_tid[] = $tid;
 		}
 	}
 	
