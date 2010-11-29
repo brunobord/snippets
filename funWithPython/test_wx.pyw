@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# What:Just a basic (beginner) test to create
 
 import wx
 
@@ -8,7 +9,7 @@ class Fen(wx.Frame):
 		wx.Frame.__init__(self, parent, id, titre)
 		
 		boite = wx.BoxSizer(wx.VERTICAL)
-		texte = wx.StaticText(self, -1, "Texte de Roxxor PGM")
+		texte = wx.StaticText(self, -1, "Texte de test, jolie phrase ...")
 		boite.Add(texte, flag=wx.ALIGN_CENTER | wx.ALL, border=20)
 		boite2 = wx.BoxSizer(wx.HORIZONTAL)
 		bouton = wx.Button(self, wx.ID_OK)
