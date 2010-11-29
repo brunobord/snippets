@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# What:Just a basic (beginner) test to create
+# What:Just a basic (beginner) test to create a wxPython window
 
 import wx
 
