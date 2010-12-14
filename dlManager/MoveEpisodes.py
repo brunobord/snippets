@@ -55,15 +55,17 @@ for name, saison, filename in listFile:
 # name / content[0] is the the show name (used to create the "/<show name>" folder)
 # saison / content[1] is the show season (according to the file)
 # filename / content[2] is the filename
-    if name in listDir:
-        listSubDir = os.listdir(tvpath+name)
-        if not 'Saison '+saison in listSubDir:
-            os.makedirs(tvpath+name+'/Saison '+saison)
-    else:
-        os.makedirs(tvpath+name)
-        os.makedirs(tvpath+name+'/Saison '+saison)
 
-    shutil.move(dlpath+filename, tvpath+name+'/Saison '+saison+'/'+filename)
+    # here you discover the magic of os.path...
+    if name in listDir:
+        listSubDir = os.listdir(os.path.join(tvpath, name))
+        if not 'Saison %s' % saison in listSubDir:
+            os.makedirs(os.path.join(tvpath, name, 'Saison %s' % saison))
+    else:
+        os.makedirs(os.path.join(tvpath, name))
+        os.makedirs(os.path.join(tvpath, name, 'Saison %s' % saison))
+
+    shutil.move(os.path.join(dlpath, filename), os.path.join(tvpath, name, 'Saison %s' % saison, filename))
     listMove.append(filename)
 
 # Display the result
