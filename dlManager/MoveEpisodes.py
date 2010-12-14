@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
 # Name: MoveEpisodes
 # What: Move and sort your episodes from your download folder to the right folder (eg. "/<show name>/Season x")
 # Why: 'Cause it's better when it's automatic
-# - - - 
-# Nom: RangeEpisodes
-# Comment: Range les épisodes de vos séries dans le dossier (ex. "/<show name>/Saison x") qui va bien
-# Pourquoi: Parce que ranger ses séries manuellement, c'est über chiant
+"""
 
 import platform
 import os
