@@ -37,10 +37,10 @@ listFile = []
 for f in os.listdir(dlpath):
     nick = f.lower()
     if '.s0' in nick:
-        listPart = list(nick.partition('.s0'))
+        listPart = nick.partition('.s0')
         saison = listPart[2][:1]
     elif '.s1' in nick:
-        listPart = list(nick.partition('.s1'))
+        listPart = nick.partition('.s1')
         saison = '1'+listPart[2][:1]
     if '.s0' in nick or '.s1' in nick:
         nick = listPart[0]
