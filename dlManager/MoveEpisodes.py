@@ -40,10 +40,10 @@ for f in os.listdir(dlpath):
     saison = m.groups()[0]
     
     if '.s0' in nick or '.s1' in nick:
-        nick = listPart[0]
-        name = nick.replace('.', ' ')
-        name = string.capwords(name)
-        listFile.append([name, saison, f])
+        nom_serie, _ = nick.split('.s%d' % saison, 1)
+        nom_serie = nom_serie.replace('.', ' ')
+        nom_serie = string.capwords(nom_serie)
+        listFile.append([nom_serie, saison, f])
 
 # Move the files at the right place reading listFile
 listMove = []
