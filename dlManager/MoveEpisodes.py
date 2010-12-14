@@ -21,19 +21,15 @@ if len(dlpath) == 0 or len(tvpath) == 0:
 if platform.system() == 'Windows':
     os.path.normcase(dlpath)
     os.path.normcase(tvpath)
-
-    if not dlpath.endswith('\\'):
-        dlpath.append('\\')
-
-    if not tvpath.endswith('\\'):
-        tvpath.append('\\')
-
+    endchar = '\\'
 else:
-    if not dlpath.endswith('/'):
-        dlpath.append('/')
-        
-    if not tvpath.endswith('/'):
-        tvpath.append('/')
+    endchar = '/'
+    
+if not dlpath.endswith(endchar):
+    dlpath.append(endchar)
+    
+if not tvpath.endswith(endchar):
+    tvpath.append(endchar)
 
 
 # Create listFile containing the show name, show season (according to the file), and the filename
