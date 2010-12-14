@@ -51,20 +51,20 @@ for f in os.listdir(dlpath):
 # Move the files at the right place reading listFile
 listMove = []
 listDir = os.listdir(tvpath)
-for content in listFile:
-# content[0] is the the show name (used to create the "/<show name>" folder)
-# content[1] is the show season (according to the file)
-# content[2] is the filename
-    if content[0] in listDir:
-        listSubDir = os.listdir(tvpath+content[0])
-        if not 'Saison '+content[1] in listSubDir:
-            os.makedirs(tvpath+content[0]+'/Saison '+content[1])
+for name, saison, filename in listFile:
+# name / content[0] is the the show name (used to create the "/<show name>" folder)
+# saison / content[1] is the show season (according to the file)
+# filename / content[2] is the filename
+    if name in listDir:
+        listSubDir = os.listdir(tvpath+name)
+        if not 'Saison '+saison in listSubDir:
+            os.makedirs(tvpath+name+'/Saison '+saison)
     else:
-        os.makedirs(tvpath+content[0])
-        os.makedirs(tvpath+content[0]+'/Saison '+content[1])
+        os.makedirs(tvpath+name)
+        os.makedirs(tvpath+name+'/Saison '+saison)
 
-    shutil.move(dlpath+content[2], tvpath+content[0]+'/Saison '+content[1]+'/'+content[2])
-    listMove.append(content[2])
+    shutil.move(dlpath+filename, tvpath+name+'/Saison '+saison+'/'+filename)
+    listMove.append(filename)
 
 # Display the result
 print 'Au départ dans %s :' % dlpath
