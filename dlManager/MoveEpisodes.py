@@ -18,21 +18,23 @@ if len(dlpath) == 0 or len(tvpath) == 0:
     dlpath = raw_input("Entrer le dossier de départ (ex. /Downloads) : ")
     tvpath = raw_input("Entrer le dossier d'arrivée (ex. /Shows) : ")
 
-if platform.system() == 'Windows':		
+if platform.system() == 'Windows':
     os.path.normcase(dlpath)
     os.path.normcase(tvpath)
-        
-    if dlpath[-1:] != '\\':
-        dlpath += '\\'
-        
-    if tvpath[-1:] != '\\':
-        tvpath += '\\'
+
+    if not dlpath.endswith('\\'):
+        dlpath.append('\\')
+
+    if not tvpath.endswith('\\'):
+        tvpath.append('\\')
+
 else:
-    if dlpath[-1:] != '/':
-        dlpath += '/'
+    if not dlpath.endswith('/'):
+        dlpath.append('/')
         
-    if tvpath[-1:] != '/':
-        tvpath += '/'
+    if not tvpath.endswith('/'):
+        tvpath.append('/')
+
 
 # Create listFile containing the show name, show season (according to the file), and the filename
 listFile = []
@@ -64,17 +66,17 @@ for content in listFile:
     else:
         os.makedirs(tvpath+content[0])
         os.makedirs(tvpath+content[0]+'/Saison '+content[1])
-        
+
     shutil.move(dlpath+content[2], tvpath+content[0]+'/Saison '+content[1]+'/'+content[2])
     listMove.append(content[2])
-                
+
 # Display the result
 print 'Au départ dans %s :' % dlpath
 if listFile.__len__() == 0:
     print 'Aucun fichier "déplaçable"\n'
 else:
     print listFile.__len__(),'fichier(s) "déplaçable(s)" dans le dossier\n'
-    
+
 print "A l'arrivée dans %s :" % tvpath
 if listMove.__len__() == 0:
     print "Aucun fichier n'a été déplacé"
