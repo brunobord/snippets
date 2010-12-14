@@ -35,7 +35,7 @@ if not tvpath.endswith(endchar):
 # Create listFile containing the show name, show season (according to the file), and the filename
 listFile = []
 for f in os.listdir(dlpath):
-    nick = str(f).lower()
+    nick = f.lower()
     if '.s0' in nick:
         listPart = list(nick.partition('.s0'))
         saison = listPart[2][:1]
