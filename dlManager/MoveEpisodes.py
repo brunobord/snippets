@@ -58,13 +58,13 @@ for name, saison, filename in listFile:
 
 # Display the result
 print 'Au départ dans %s :' % dlpath
-if len(listFile) == 0:
+if not listFile:
     print 'Aucun fichier "déplaçable"\n'
 else:
     print len(listFile),'fichier(s) "déplaçable(s)" dans le dossier\n'
 
 print "A l'arrivée dans %s :" % tvpath
-if len(listMove) == 0:
+if not listMove:
     print "Aucun fichier n'a été déplacé"
 else:
     print len(listMove),'fichier(s) déplacé(s) :'
