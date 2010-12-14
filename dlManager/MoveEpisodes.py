@@ -34,8 +34,8 @@ if not tvpath.endswith(endchar):
 
 # Create listFile containing the show name, show season (according to the file), and the filename
 listFile = []
-for file in os.listdir(dlpath):
-    nick = str(file).lower()
+for f in os.listdir(dlpath):
+    nick = str(f).lower()
     if '.s0' in nick:
         listPart = list(nick.partition('.s0'))
         saison = listPart[2][:1]
@@ -46,7 +46,7 @@ for file in os.listdir(dlpath):
         nick = listPart[0]
         name = nick.replace('.', ' ')
         name = string.capwords(name)
-        listFile.append([name, saison, file])
+        listFile.append([name, saison, f])
 
 # Move the files at the right place reading listFile
 listMove = []
